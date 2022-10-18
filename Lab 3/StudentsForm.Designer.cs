@@ -30,8 +30,8 @@
         {
             this.studentsDataGridView = new System.Windows.Forms.DataGridView();
             this.closeButton = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
+            this.removeButton = new System.Windows.Forms.Button();
+            this.editButton = new System.Windows.Forms.Button();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -44,6 +44,7 @@
             // 
             // studentsDataGridView
             // 
+            this.studentsDataGridView.AllowUserToAddRows = false;
             this.studentsDataGridView.AllowUserToResizeColumns = false;
             this.studentsDataGridView.AllowUserToResizeRows = false;
             this.studentsDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
@@ -56,8 +57,11 @@
             this.Column6,
             this.Column7});
             this.studentsDataGridView.Location = new System.Drawing.Point(29, 30);
+            this.studentsDataGridView.MultiSelect = false;
             this.studentsDataGridView.Name = "studentsDataGridView";
+            this.studentsDataGridView.ReadOnly = true;
             this.studentsDataGridView.RowHeadersVisible = false;
+            this.studentsDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.studentsDataGridView.Size = new System.Drawing.Size(878, 308);
             this.studentsDataGridView.TabIndex = 0;
             // 
@@ -71,29 +75,31 @@
             this.closeButton.UseVisualStyleBackColor = true;
             this.closeButton.Click += new System.EventHandler(this.closeButton_Click);
             // 
-            // button2
+            // removeButton
             // 
-            this.button2.Location = new System.Drawing.Point(723, 344);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 23);
-            this.button2.TabIndex = 2;
-            this.button2.Text = "Удалить";
-            this.button2.UseVisualStyleBackColor = true;
+            this.removeButton.Location = new System.Drawing.Point(723, 344);
+            this.removeButton.Name = "removeButton";
+            this.removeButton.Size = new System.Drawing.Size(75, 23);
+            this.removeButton.TabIndex = 2;
+            this.removeButton.Text = "Удалить";
+            this.removeButton.UseVisualStyleBackColor = true;
+            this.removeButton.Click += new System.EventHandler(this.removeButton_Click);
             // 
-            // button3
+            // editButton
             // 
-            this.button3.Location = new System.Drawing.Point(804, 344);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(103, 23);
-            this.button3.TabIndex = 3;
-            this.button3.Text = "Редактировать";
-            this.button3.UseVisualStyleBackColor = true;
+            this.editButton.Location = new System.Drawing.Point(804, 344);
+            this.editButton.Name = "editButton";
+            this.editButton.Size = new System.Drawing.Size(103, 23);
+            this.editButton.TabIndex = 3;
+            this.editButton.Text = "Редактировать";
+            this.editButton.UseVisualStyleBackColor = true;
             // 
             // Column1
             // 
             this.Column1.DataPropertyName = "FullName";
             this.Column1.HeaderText = "ФИО";
             this.Column1.Name = "Column1";
+            this.Column1.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             this.Column1.Width = 200;
             // 
             // Column2
@@ -108,12 +114,14 @@
             this.Column3.DataPropertyName = "Gender";
             this.Column3.HeaderText = "Пол";
             this.Column3.Name = "Column3";
+            this.Column3.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             // 
             // Column4
             // 
             this.Column4.DataPropertyName = "BirthDate";
             this.Column4.HeaderText = "Дата рождения";
             this.Column4.Name = "Column4";
+            this.Column4.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             this.Column4.Width = 110;
             // 
             // Column5
@@ -121,12 +129,14 @@
             this.Column5.DataPropertyName = "Debts";
             this.Column5.HeaderText = "Задолженности";
             this.Column5.Name = "Column5";
+            this.Column5.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             // 
             // Column6
             // 
             this.Column6.DataPropertyName = "Foundation";
             this.Column6.HeaderText = "Основа обучения";
             this.Column6.Name = "Column6";
+            this.Column6.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             this.Column6.Width = 105;
             // 
             // Column7
@@ -134,6 +144,7 @@
             this.Column7.DataPropertyName = "Note";
             this.Column7.HeaderText = "Примечание";
             this.Column7.Name = "Column7";
+            this.Column7.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             this.Column7.Width = 150;
             // 
             // StudentsForm
@@ -141,8 +152,8 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(942, 450);
-            this.Controls.Add(this.button3);
-            this.Controls.Add(this.button2);
+            this.Controls.Add(this.editButton);
+            this.Controls.Add(this.removeButton);
             this.Controls.Add(this.closeButton);
             this.Controls.Add(this.studentsDataGridView);
             this.Name = "StudentsForm";
@@ -156,8 +167,8 @@
 
         private System.Windows.Forms.DataGridView studentsDataGridView;
         private System.Windows.Forms.Button closeButton;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button removeButton;
+        private System.Windows.Forms.Button editButton;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column3;

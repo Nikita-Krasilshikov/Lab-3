@@ -83,13 +83,15 @@
             // birthDateDateTimePicker
             // 
             this.birthDateDateTimePicker.Location = new System.Drawing.Point(31, 224);
+            this.birthDateDateTimePicker.MaxDate = new System.DateTime(2022, 10, 18, 0, 0, 0, 0);
             this.birthDateDateTimePicker.Name = "birthDateDateTimePicker";
             this.birthDateDateTimePicker.Size = new System.Drawing.Size(197, 20);
             this.birthDateDateTimePicker.TabIndex = 4;
+            this.birthDateDateTimePicker.Value = new System.DateTime(2022, 10, 18, 0, 0, 0, 0);
             // 
             // genderComboBox
             // 
-            this.genderComboBox.FormattingEnabled = true;
+            this.genderComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.genderComboBox.Items.AddRange(new object[] {
             "Мужской",
             "Женский"});
@@ -159,6 +161,7 @@
             // 
             // foundationComboBox
             // 
+            this.foundationComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.foundationComboBox.FormattingEnabled = true;
             this.foundationComboBox.Items.AddRange(new object[] {
             "Бюджетная",

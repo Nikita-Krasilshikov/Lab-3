@@ -12,9 +12,17 @@ namespace Lab_3
 {
     public partial class PaidForm : Form
     {
-        public PaidForm()
+        public PaidForm(List<Student> students)
         {
             InitializeComponent();
+            students = students.OrderByDescending(o => o.StudentsID).ToList();
+            this.studentsDataGridView.AutoGenerateColumns = false;
+            this.studentsDataGridView.DataSource = students;
+        }
+
+        private void closeButton_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

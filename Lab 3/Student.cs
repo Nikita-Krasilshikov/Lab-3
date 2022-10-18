@@ -19,6 +19,25 @@ namespace Lab_3
         private string foundation;
         private int debts;
         private string note;
+        public Student()
+        {
+
+        }
+        public Student(string firstName, string lastName, string middleName, int birthDay,
+            int birthMonth, int birthYear, string gender, int studentsID, string foundation, int debts, string note)
+        {
+            this.firstName = firstName;
+            this.lastName = lastName;
+            this.middleName = middleName;
+            this.birthDay = birthDay;
+            this.birthMonth = birthMonth;
+            this.birthYear = birthYear;
+            this.gender = gender;
+            this.studentsID = studentsID;
+            this.foundation = foundation;
+            this.debts = debts;
+            this.note = note;
+        }
 
         public string FirstName { get => firstName; set => firstName = value; }
         public string LastName { get => lastName; set => lastName = value; }

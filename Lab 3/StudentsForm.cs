@@ -17,6 +17,7 @@ namespace Lab_3
         {
             InitializeComponent();
             studentsDataGridView.AutoGenerateColumns = false;
+            students = students.OrderByDescending(o => o.StudentsID).ToList();
             this.students = students;
             studentsDataGridView.DataSource = students;
         }
@@ -28,6 +29,17 @@ namespace Lab_3
         private void closeButton_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void removeButton_Click(object sender, EventArgs e)
+        {
+            if (studentsDataGridView.RowCount > 0)
+            {
+                Student student = (Student)studentsDataGridView.CurrentRow.DataBoundItem;
+                students.Remove(student);
+                studentsDataGridView.DataSource = null;
+                studentsDataGridView.DataSource = students;
+            }
         }
     }
 }

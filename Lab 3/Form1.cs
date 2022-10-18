@@ -12,12 +12,25 @@ namespace Lab_3
 {
     public partial class Form1 : Form
     {
-        List<Student> students;
+        List<Student> students = new List<Student>() {
+            new Student("Пупкин", "Василий", "Петрович", 10, 2, 1999, "Мужской", 1201, "Платная", 0, "Староста"),
+            new Student("Пупкин", "Василий", "Петрович", 10, 2, 1999, "Мужской", 1002, "Бюджетная", 2, ""),
+            new Student("Пупкин", "Василий", "Петрович", 10, 2, 1999, "Женский", 1103, "Платная", 3, ""),
+            new Student("Пупкин", "Василий", "Петрович", 10, 2, 1999, "Мужской", 1004, "Платная", 0, ""),
+            new Student("Пупкин", "Василий", "Петрович", 10, 2, 1999, "Мужской", 1005, "Бюджетная", 4, ""),
+            new Student("Пупкин", "Василий", "Петрович", 10, 2, 1999, "Женский", 1006, "Платная", 1, ""),
+            new Student("Пупкин", "Василий", "Петрович", 10, 2, 1999, "Мужской", 1008, "Платная", 2, ""),
+            new Student("Пупкин", "Василий", "Петрович", 10, 2, 1999, "Женский", 1011, "Бюджетная", 0, ""),
+            new Student("Пупкин", "Василий", "Петрович", 10, 2, 1999, "Женский", 13, "Платная", 1, ""),
+            new Student("Пупкин", "Василий", "Петрович", 10, 2, 1999, "Мужской", 1045, "Бюджетная", 0, "")
+        };
 
         public Form1()
         {
             InitializeComponent();
-            students = new List<Student>();
+            studentsCountLabel.Text = $"Количество записей: {students.Count.ToString()}";
+            genderComboBox.SelectedIndex = 0;
+            foundationComboBox.SelectedIndex = 0;
         }
 
         private void showGroupListButton_Click(object sender, EventArgs e)
@@ -28,29 +41,61 @@ namespace Lab_3
 
         private void workingButton_Click(object sender, EventArgs e)
         {
-            PaidForm paidForm = new PaidForm();
+            PaidForm paidForm = new PaidForm(students.Where(o => o.Foundation == "Платная").ToList());
             paidForm.ShowDialog();
         }
 
         private void addStudentButton_Click(object sender, EventArgs e)
         {
-            // TODO: Обработка ошибок
-            // TODO: Обнуление после добавления
-            // TODO: Проверка уникальности по StudentsID
-            students.Add(new Student
+            // TODO: try catch
+            int studentsID = int.Parse(studentsIDTextBox.Text);
+            string firstName, lastName;
+            int debts = 0;
+            if (students.Count(o => o.StudentsID == studentsID) > 0)
             {
-                FirstName = firstNameTextBox.Text,
-                LastName = lastNameTextBox.Text,
-                MiddleName = middleNameTextBox.Text,
-                BirthDay = birthDateDateTimePicker.Value.Day,
-                BirthMonth = birthDateDateTimePicker.Value.Month,
-                BirthYear = birthDateDateTimePicker.Value.Year,
-                Gender = genderComboBox.Text,
-                StudentsID = int.Parse(studentsIDTextBox.Text),
-                Foundation = foundationComboBox.Text,
-                Debts = int.Parse(debtsTextBox.Text),
-                Note = noteTextBox.Text
-            });
+                MessageBox.Show("Студент с таким ID уже существует!", "Ошибка ID", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            if (debtsTextBox.Text.Trim().Length == 0)
+            {
+                debts = int.Parse(debtsTextBox.Text.Trim());
+            }
+            firstName = firstNameTextBox.Text;
+            if (firstName.Trim().Length == 0)
+            {
+                MessageBox.Show("Поле Имя студента не может быть пустым", "Ошибка Имени", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            lastName = lastNameTextBox.Text;
+            if (lastName.Trim().Length == 0)
+            {
+                MessageBox.Show("Поле Фамилия студента не может быть пустым", "Ошибка Фамилии", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            students.Add(new Student
+            (
+                firstName,
+                lastName,
+                middleNameTextBox.Text,
+                birthDateDateTimePicker.Value.Day,
+                birthDateDateTimePicker.Value.Month,
+                birthDateDateTimePicker.Value.Year,
+                genderComboBox.Text,
+                studentsID,
+                foundationComboBox.Text,
+                debts,
+                noteTextBox.Text
+            ));
+
+            firstNameTextBox.Text = "";
+            lastNameTextBox.Text = "";
+            middleNameTextBox.Text = "";
+            genderComboBox.Text = "";
+            studentsIDTextBox.Text = "";
+            foundationComboBox.Text = "";
+            debtsTextBox.Text = "";
+            noteTextBox.Text = "";
 
             studentsCountLabel.Text = $"Количество записей: {students.Count.ToString()}";
         }
