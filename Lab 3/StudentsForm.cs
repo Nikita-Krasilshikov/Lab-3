@@ -1,11 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Lab_3
@@ -13,12 +9,15 @@ namespace Lab_3
     public partial class StudentsForm : Form
     {
         public List<Student> students;
+        // Передача коллекции студентов в конструктор
         public StudentsForm(List<Student> students)
         {
             InitializeComponent();
             studentsDataGridView.AutoGenerateColumns = false;
+            // Сортировка коллекции по убыванию ID студента
             students = students.OrderByDescending(o => o.StudentID).ToList();
             this.students = students;
+            // Установка источника данных для таблицы
             studentsDataGridView.DataSource = students;
         }
         public StudentsForm()
@@ -31,12 +30,17 @@ namespace Lab_3
             this.Close();
         }
 
+        // Обработчик нажатия на кнопку "удалить"
         private void removeButton_Click(object sender, EventArgs e)
         {
+            // Проверка на то, что таблица не пустая
             if (studentsDataGridView.RowCount > 0)
             {
+                // Получение экземпляра студента из таблицы (выделенная запись в таблице)
                 Student student = (Student)studentsDataGridView.CurrentRow.DataBoundItem;
+                // Удаление студента из коллекции
                 students.Remove(student);
+                // Обновление источника данных таблицы, чтобы таблица перерисовалась
                 studentsDataGridView.DataSource = null;
                 studentsDataGridView.DataSource = students;
             }
@@ -46,8 +50,10 @@ namespace Lab_3
         {
             if (studentsDataGridView.RowCount > 0)
             {
+                // Получение экземпляра студента из таблицы (выделенная запись в таблице)
                 Student student = (Student)studentsDataGridView.CurrentRow.DataBoundItem;
                 EditForm ef = new EditForm(student);
+                // Утсановка владельца формы, для доступа к коллекции студентов
                 ef.Owner = this;
                 if (ef.ShowDialog() == DialogResult.OK)
                 {

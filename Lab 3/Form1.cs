@@ -1,17 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Lab_3
 {
     public partial class Form1 : Form
     {
+        // Коллекция студентов с инициализацией
         List<Student> students = new List<Student>() {
             new Student("Пупкин", "Василий", "Петрович", 10, 2, 1999, "Мужской", 1201, "Платная", 0, "Староста"),
             new Student("Пупкин", "Василий", "Петрович", 10, 2, 1999, "Мужской", 1002, "Бюджетная", 2, ""),
@@ -28,43 +25,54 @@ namespace Lab_3
         public Form1()
         {
             InitializeComponent();
+            // Вывод в Label кол-ва студентов
             studentsCountLabel.Text = $"Количество записей: {students.Count.ToString()}";
+            // Установка начальных значений в comboBox-ах
             genderComboBox.SelectedIndex = 0;
             foundationComboBox.SelectedIndex = 0;
         }
 
         private void showGroupListButton_Click(object sender, EventArgs e)
         {
+            // Создание и вывод формы со списком студентов
             StudentsForm studentsForm = new StudentsForm(students);
             studentsForm.ShowDialog();
         }
 
         private void workingButton_Click(object sender, EventArgs e)
         {
+            // Создание и вывод формы со списком студентов-платников
             PaidForm paidForm = new PaidForm(students.Where(o => o.Foundation == "Платная").ToList());
             paidForm.ShowDialog();
         }
 
+        // Обработчик нажатия кнопки "Добавить студента"
         private void addStudentButton_Click(object sender, EventArgs e)
         {
             int studentID;
+            // Проверка на удачное преобразование из строки в число
             try
             {
                 studentID = int.Parse(studentsIDTextBox.Text);
             }
             catch (FormatException)
             {
+                // Если во время преобразования произошла ошибка FormatException, это значит, что введено не числовое значение.
                 MessageBox.Show("Поле ID студента должно быть числом!", "Ошибка ID", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
             string firstName, lastName;
             int debts = 0;
+            // Проверка на существование студента с таким же ID
+            // Lambda выражение. o - каждый элемент коллекции
+            // Проверяем и считаем кол-во студентов с ID равным studentID
             if (students.Count(o => o.StudentID == studentID) > 0)
             {
                 MessageBox.Show("Студент с таким ID уже существует!", "Ошибка уникальности", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
+            // Trim - функция, очищающая пробельные символы в начале и в конце строки
             if (debtsTextBox.Text.Trim().Length == 0)
             {
                 try
@@ -90,6 +98,7 @@ namespace Lab_3
                 return;
             }
 
+            // Создание и добавление студента в коллекцию
             students.Add(new Student
             (
                 firstName,
@@ -105,6 +114,7 @@ namespace Lab_3
                 noteTextBox.Text
             ));
 
+            // Очищение полей
             firstNameTextBox.Text = "";
             lastNameTextBox.Text = "";
             middleNameTextBox.Text = "";

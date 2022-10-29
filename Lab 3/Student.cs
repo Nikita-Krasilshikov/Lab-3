@@ -1,11 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Lab_3
+﻿namespace Lab_3
 {
+    // Клас, описывающий студента
     public class Student
     {
         private string firstName;
