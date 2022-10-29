@@ -93,20 +93,23 @@
             this.editButton.TabIndex = 3;
             this.editButton.Text = "Редактировать";
             this.editButton.UseVisualStyleBackColor = true;
+            this.editButton.Click += new System.EventHandler(this.editButton_Click);
             // 
             // Column1
             // 
             this.Column1.DataPropertyName = "FullName";
             this.Column1.HeaderText = "ФИО";
             this.Column1.Name = "Column1";
+            this.Column1.ReadOnly = true;
             this.Column1.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             this.Column1.Width = 200;
             // 
             // Column2
             // 
-            this.Column2.DataPropertyName = "StudentsID";
+            this.Column2.DataPropertyName = "StudentID";
             this.Column2.HeaderText = "№ студенческого";
             this.Column2.Name = "Column2";
+            this.Column2.ReadOnly = true;
             this.Column2.Width = 110;
             // 
             // Column3
@@ -114,6 +117,7 @@
             this.Column3.DataPropertyName = "Gender";
             this.Column3.HeaderText = "Пол";
             this.Column3.Name = "Column3";
+            this.Column3.ReadOnly = true;
             this.Column3.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             // 
             // Column4
@@ -121,6 +125,7 @@
             this.Column4.DataPropertyName = "BirthDate";
             this.Column4.HeaderText = "Дата рождения";
             this.Column4.Name = "Column4";
+            this.Column4.ReadOnly = true;
             this.Column4.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             this.Column4.Width = 110;
             // 
@@ -129,6 +134,7 @@
             this.Column5.DataPropertyName = "Debts";
             this.Column5.HeaderText = "Задолженности";
             this.Column5.Name = "Column5";
+            this.Column5.ReadOnly = true;
             this.Column5.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             // 
             // Column6
@@ -136,6 +142,7 @@
             this.Column6.DataPropertyName = "Foundation";
             this.Column6.HeaderText = "Основа обучения";
             this.Column6.Name = "Column6";
+            this.Column6.ReadOnly = true;
             this.Column6.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             this.Column6.Width = 105;
             // 
@@ -144,6 +151,7 @@
             this.Column7.DataPropertyName = "Note";
             this.Column7.HeaderText = "Примечание";
             this.Column7.Name = "Column7";
+            this.Column7.ReadOnly = true;
             this.Column7.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             this.Column7.Width = 150;
             // 

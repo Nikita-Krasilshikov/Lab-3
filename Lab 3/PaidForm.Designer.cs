@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.studentsDataGridView = new System.Windows.Forms.DataGridView();
+            this.closeButton = new System.Windows.Forms.Button();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -36,7 +37,6 @@
             this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.closeButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.studentsDataGridView)).BeginInit();
             this.SuspendLayout();
             // 
@@ -59,6 +59,16 @@
             this.studentsDataGridView.Size = new System.Drawing.Size(878, 308);
             this.studentsDataGridView.TabIndex = 1;
             // 
+            // closeButton
+            // 
+            this.closeButton.Location = new System.Drawing.Point(419, 408);
+            this.closeButton.Name = "closeButton";
+            this.closeButton.Size = new System.Drawing.Size(75, 23);
+            this.closeButton.TabIndex = 2;
+            this.closeButton.Text = "OK";
+            this.closeButton.UseVisualStyleBackColor = true;
+            this.closeButton.Click += new System.EventHandler(this.closeButton_Click);
+            // 
             // Column1
             // 
             this.Column1.DataPropertyName = "FullName";
@@ -68,7 +78,7 @@
             // 
             // Column2
             // 
-            this.Column2.DataPropertyName = "StudentsID";
+            this.Column2.DataPropertyName = "StudentID";
             this.Column2.HeaderText = "№ студенческого";
             this.Column2.Name = "Column2";
             this.Column2.Width = 110;
@@ -106,16 +116,6 @@
             this.Column7.Name = "Column7";
             this.Column7.Width = 150;
             // 
-            // closeButton
-            // 
-            this.closeButton.Location = new System.Drawing.Point(419, 408);
-            this.closeButton.Name = "closeButton";
-            this.closeButton.Size = new System.Drawing.Size(75, 23);
-            this.closeButton.TabIndex = 2;
-            this.closeButton.Text = "OK";
-            this.closeButton.UseVisualStyleBackColor = true;
-            this.closeButton.Click += new System.EventHandler(this.closeButton_Click);
-            // 
             // PaidForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -133,6 +133,7 @@
         #endregion
 
         private System.Windows.Forms.DataGridView studentsDataGridView;
+        private System.Windows.Forms.Button closeButton;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
@@ -140,6 +141,5 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column6;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column7;
-        private System.Windows.Forms.Button closeButton;
     }
 }

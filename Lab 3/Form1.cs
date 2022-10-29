@@ -47,18 +47,35 @@ namespace Lab_3
 
         private void addStudentButton_Click(object sender, EventArgs e)
         {
-            // TODO: try catch
-            int studentsID = int.Parse(studentsIDTextBox.Text);
+            int studentID;
+            try
+            {
+                studentID = int.Parse(studentsIDTextBox.Text);
+            }
+            catch (FormatException)
+            {
+                MessageBox.Show("Поле ID студента должно быть числом!", "Ошибка ID", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
             string firstName, lastName;
             int debts = 0;
-            if (students.Count(o => o.StudentsID == studentsID) > 0)
+            if (students.Count(o => o.StudentID == studentID) > 0)
             {
-                MessageBox.Show("Студент с таким ID уже существует!", "Ошибка ID", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Студент с таким ID уже существует!", "Ошибка уникальности", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
             if (debtsTextBox.Text.Trim().Length == 0)
             {
-                debts = int.Parse(debtsTextBox.Text.Trim());
+                try
+                {
+                    debts = int.Parse(debtsTextBox.Text.Trim());
+                }
+                catch (FormatException)
+                {
+                    MessageBox.Show("Поле Кол-во долгов должно быть числом!", "Ошибка формата", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
             }
             firstName = firstNameTextBox.Text;
             if (firstName.Trim().Length == 0)
@@ -82,7 +99,7 @@ namespace Lab_3
                 birthDateDateTimePicker.Value.Month,
                 birthDateDateTimePicker.Value.Year,
                 genderComboBox.Text,
-                studentsID,
+                studentID,
                 foundationComboBox.Text,
                 debts,
                 noteTextBox.Text

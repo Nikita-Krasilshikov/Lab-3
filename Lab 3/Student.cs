@@ -15,7 +15,7 @@ namespace Lab_3
         private int birthMonth;
         private int birthYear;
         private string gender;
-        private int studentsID;
+        private int studentID;
         private string foundation;
         private int debts;
         private string note;
@@ -24,19 +24,19 @@ namespace Lab_3
 
         }
         public Student(string firstName, string lastName, string middleName, int birthDay,
-            int birthMonth, int birthYear, string gender, int studentsID, string foundation, int debts, string note)
+            int birthMonth, int birthYear, string gender, int studentID, string foundation, int debts, string note)
         {
-            this.firstName = firstName;
-            this.lastName = lastName;
-            this.middleName = middleName;
-            this.birthDay = birthDay;
-            this.birthMonth = birthMonth;
-            this.birthYear = birthYear;
-            this.gender = gender;
-            this.studentsID = studentsID;
-            this.foundation = foundation;
-            this.debts = debts;
-            this.note = note;
+            this.FirstName = firstName;
+            this.LastName = lastName;
+            this.MiddleName = middleName;
+            this.BirthDay = birthDay;
+            this.BirthMonth = birthMonth;
+            this.BirthYear = birthYear;
+            this.Gender = gender;
+            this.StudentID = studentID;
+            this.Foundation = foundation;
+            this.Debts = debts;
+            this.Note = note;
         }
 
         public string FirstName { get => firstName; set => firstName = value; }
@@ -46,7 +46,7 @@ namespace Lab_3
         public int BirthMonth { get => birthMonth; set => birthMonth = value; }
         public int BirthYear { get => birthYear; set => birthYear = value; }
         public string Gender { get => gender; set => gender = value; }
-        public int StudentsID { get => studentsID; set => studentsID = value; }
+        public int StudentID { get => studentID; set => studentID = value; }
         public string Foundation { get => foundation; set => foundation = value; }
         public int Debts { get => debts; set => debts = value; }
         public string Note { get => note; set => note = value; }

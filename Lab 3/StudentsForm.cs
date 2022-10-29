@@ -12,12 +12,12 @@ namespace Lab_3
 {
     public partial class StudentsForm : Form
     {
-        private List<Student> students;
+        public List<Student> students;
         public StudentsForm(List<Student> students)
         {
             InitializeComponent();
             studentsDataGridView.AutoGenerateColumns = false;
-            students = students.OrderByDescending(o => o.StudentsID).ToList();
+            students = students.OrderByDescending(o => o.StudentID).ToList();
             this.students = students;
             studentsDataGridView.DataSource = students;
         }
@@ -39,6 +39,21 @@ namespace Lab_3
                 students.Remove(student);
                 studentsDataGridView.DataSource = null;
                 studentsDataGridView.DataSource = students;
+            }
+        }
+
+        private void editButton_Click(object sender, EventArgs e)
+        {
+            if (studentsDataGridView.RowCount > 0)
+            {
+                Student student = (Student)studentsDataGridView.CurrentRow.DataBoundItem;
+                EditForm ef = new EditForm(student);
+                ef.Owner = this;
+                if (ef.ShowDialog() == DialogResult.OK)
+                {
+                    studentsDataGridView.DataSource = null;
+                    studentsDataGridView.DataSource = students;
+                }
             }
         }
     }

@@ -15,7 +15,7 @@ namespace Lab_3
         public PaidForm(List<Student> students)
         {
             InitializeComponent();
-            students = students.OrderByDescending(o => o.StudentsID).ToList();
+            students = students.OrderByDescending(o => o.StudentID).ToList();
             this.studentsDataGridView.AutoGenerateColumns = false;
             this.studentsDataGridView.DataSource = students;
         }
