@@ -11,6 +11,7 @@ namespace Lab_3
         {
             this.student = student;
             InitializeComponent();
+            // Получение значений для каждого элемента формы
             firstNameTextBox.Text = student.FirstName;
             lastNameTextBox.Text = student.LastName;
             middleNameTextBox.Text = student.MiddleName;
@@ -24,6 +25,7 @@ namespace Lab_3
 
         private void cancelButton_Click(object sender, EventArgs e)
         {
+            // Установка указателя на то, как завершилась работа с формой (просто закрытие или обновление данных)
             this.DialogResult = DialogResult.Cancel;
             this.Close();
         }
@@ -83,6 +85,7 @@ namespace Lab_3
             student.Debts = debts;
             student.Note = noteTextBox.Text;
 
+            // Установка указателя на то, как завершилась работа с формой (просто закрытие или обновление данных)
             this.DialogResult = DialogResult.OK;
             this.Close();
         }
